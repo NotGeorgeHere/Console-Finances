@@ -86,3 +86,32 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+/* PSEUDOCODE
+Total number of months - either a for loop or just console.log(arrayName.length)
+
+net total of profit/loss - for loop going through each items nested array and adding together arrayName[i][1], know each profit is going to be in the 2nd position in the nested array
+so looping  through the whole array [i] and then the 2nd position of the nested array
+
+average changes profit/loss - track total change of profits - 
+
+*/
+
+//Presentation
+console.log("Financial Analysis\n------------------\n")
+
+//Prints out total length of finance array
+var totalMonths = finances.length;
+console.log("Total Months: " + totalMonths);
+
+//Generates a variable for net total
+var netTotal = 0;
+
+//Loops through array and adds the current net total with the next item in the array
+for (var i = 0; i < totalMonths; i++){
+    netTotal += finances[i][1];
+}
+
+
+console.log("Net Profit: " + "£"+netTotal);
+
