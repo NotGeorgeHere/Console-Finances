@@ -110,6 +110,10 @@ var netTotal = 0;
 var profitChange = 0;
 var changeTotal = 0;
 var changeArray = [];
+var biggestIncrease = finances[0][1];
+var biggestDecrease = finances[0][1];
+var monthIncrease;
+var monthDecrease;
 
 //Loops through array and adds the current net total with the next item in the array
 for (var i = 0; i < totalMonths; i++){
@@ -119,6 +123,23 @@ for (var i = 0; i < totalMonths; i++){
         profitChange = (finances[i][1] - finances[i+1][1]);
         changeArray.push(profitChange);
     }
+        //Checks to see if current array position is bigger than stored array position, if yes then current position becomes new stored position
+        if (biggestIncrease >= finances[i][1]){
+            biggestIncrease = biggestIncrease
+        }
+        else if (biggestIncrease < finances[i][1]){
+            biggestIncrease = finances[i][1];
+            monthIncrease = finances[i];
+        }
+
+        //Checks to see if current array position is smaller than stored array position, if yes then current position becomes new stored position
+        if (biggestDecrease <= finances[i][1]){
+            biggestDecrease = biggestDecrease
+        }
+        else if (biggestDecrease > finances[i][1]){
+            biggestDecrease = finances[i][1];
+            monthDecrease = finances[i];
+        }
 }
 
 //Loops through new array for change and adds them all together to get total change over the financial period
@@ -133,8 +154,8 @@ console.log("Financial Analysis\n------------------\n")
 console.log("Total Months: " + totalMonths);
 console.log("Net Profit: " + "£"+netTotal);
 console.log("Average Change: £"+averageChange.toFixed(2));
-// console.log("Greatest increase in profits: ");
-// console.log("Greatest decrease in profits: ");
+console.log("Greatest increase in profits: " + monthIncrease.toString());
+console.log("Greatest decrease in profits: "+ monthDecrease.toString());
 
 
 
