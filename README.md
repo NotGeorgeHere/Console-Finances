@@ -9,6 +9,7 @@ My motivation for this project was to gain a greater understanding of JavaScript
 ## Installation
 
 Github repository: https://github.com/NotGeorgeHere/Console-Finances
+
 Live Deployment Page: https://notgeorgehere.github.io/Console-Finances/
 
 ## Usage
