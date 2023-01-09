@@ -102,25 +102,20 @@ both use similar methodolgies, for loop going through whole array then if statem
 use nested loops to find i and i+1 to compare then
 */
 
-//Gets total months by working out length of array
-var totalMonths = finances.length;
-
 //Generates and defines variables
+var totalMonths = finances.length;
 var netTotal = 0;
-var profitChange = 0;
 var changeTotal = 0;
 var changeArray = [];
 var biggestIncrease = finances[0][1];
 var biggestDecrease = finances[0][1];
-var monthIncrease;
-var monthDecrease;
 
 //Loops through array and adds the current net total with the next item in the array
 for (var i = 0; i < totalMonths; i++){
     netTotal += finances[i][1];
     //Loops until the final array index i and i+1, so the next along, and subtracts them into a new array
-    if ( i < finances.length-1){
-        profitChange = (finances[i][1] - finances[i+1][1]);
+    if ( i < totalMonths-1){
+        var profitChange = (finances[i][1] - finances[i+1][1]);
         changeArray.push(profitChange);
     }
         //Checks to see if current array position is bigger than stored array position, if yes then current position becomes new stored position
@@ -129,25 +124,23 @@ for (var i = 0; i < totalMonths; i++){
         }
         else if (biggestIncrease < finances[i][1]){
             biggestIncrease = finances[i][1];
-            monthIncrease = finances[i];
+            var monthIncrease = finances[i];
         }
-
         //Checks to see if current array position is smaller than stored array position, if yes then current position becomes new stored position
         if (biggestDecrease <= finances[i][1]){
             biggestDecrease = biggestDecrease
         }
         else if (biggestDecrease > finances[i][1]){
             biggestDecrease = finances[i][1];
-            monthDecrease = finances[i];
+            var monthDecrease = finances[i];
         }
 }
-
 //Loops through new array for change and adds them all together to get total change over the financial period
 for (var i = 0; i< changeArray.length; i++){
     changeTotal += changeArray[i];
 }
 //Gets the average change, use the original array as changeArray only has 85 items as you can't compare the last item to anything so it isn't added into array
-var averageChange = changeTotal/finances.length;
+var averageChange = changeTotal/totalMonths;
 
 //Presentation
 console.log("Financial Analysis\n------------------\n")
@@ -156,7 +149,3 @@ console.log("Net Profit: " + "£"+netTotal);
 console.log("Average Change: £"+averageChange.toFixed(2));
 console.log("Greatest increase in profits: " + monthIncrease.toString());
 console.log("Greatest decrease in profits: "+ monthDecrease.toString());
-
-
-
-
